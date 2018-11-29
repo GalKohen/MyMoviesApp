@@ -9,6 +9,30 @@ public class Movie {
     String trailerLink;
     String releaseDate;
     String movieImageLink;
+    String movieImageBigLink;
+
+    public Movie(String name, String movieImageLink, String movieImageBigLink) {
+        this.name = name;
+        this.movieImageLink = movieImageLink;
+        this.movieImageBigLink = movieImageBigLink;
+    }
+
+    public String getMovieImageBigLink() {
+        return movieImageBigLink;
+    }
+
+    public void setMovieImageBigLink(String movieImageBigLink) {
+        this.movieImageBigLink = movieImageBigLink;
+    }
+
+    public Movie(String name, String content, String trailerLink, String releaseDate, String movieImageLink, String movieImageBigLink) {
+        this.name = name;
+        this.content = content;
+        this.trailerLink = trailerLink;
+        this.releaseDate = releaseDate;
+        this.movieImageLink = movieImageLink;
+        this.movieImageBigLink = movieImageBigLink;
+    }
 
     public Movie(String name) {
         this.name = name;
@@ -18,6 +42,7 @@ public class Movie {
         this.name = name;
         this.movieImageLink = movieImageLink;
     }
+
 
     public Movie(String name, String content, String trailerLink, String releaseDate, String movieImageLink) {
         this.name = name;

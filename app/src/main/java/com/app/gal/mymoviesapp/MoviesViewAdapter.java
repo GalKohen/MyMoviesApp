@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,31 +23,29 @@ import java.util.List;
  */
 public class MoviesViewAdapter extends RecyclerView.Adapter<MoviesViewAdapter.ViewHolder> {
 
-  //  LayoutInflater mLayoutInflater;
- //   List<String> mStrings;
+    private static final String TAG = "MoviesViewAdapter";
     List<Movie> movies;
     private Context mContext;
     OnRecyclerClickListener mOnRecyclerClickListener;
 
-    public MoviesViewAdapter(Context context, List<Movie> movies,OnRecyclerClickListener onRecyclerClickListener) {
-    //    mLayoutInflater = LayoutInflater.from(context);
+    public MoviesViewAdapter(Context context, List<Movie> movies, OnRecyclerClickListener onRecyclerClickListener) {
         mContext = context;
         this.movies = new ArrayList<>();
-        this.movies=movies;
-        mOnRecyclerClickListener=onRecyclerClickListener;
+        this.movies = movies;
+        mOnRecyclerClickListener = onRecyclerClickListener;
 
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      //  View view = mLayoutInflater.inflate(R.layout.movie_row, parent, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: position is: "+position);
         holder.onBindViewHolder(movies.get(position));
     }
 
@@ -68,16 +67,16 @@ public class MoviesViewAdapter extends RecyclerView.Adapter<MoviesViewAdapter.Vi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnRecyclerClickListener.onItemClick(itemView,getAdapterPosition());
+                    mOnRecyclerClickListener.onItemClick(itemView, getAdapterPosition());
                 }
             });
         }
-        public void onBindViewHolder(Movie movie ) {
-          //  ivImage.setImageResource(movieModel.getImageRes());
+
+        public void onBindViewHolder(Movie movie) {
             tvTitle.setText(movie.getName());
             tvOverview.setText(R.string.sampleContent);
             Picasso.get().load(movie.getMovieImageLink()).into(ivImage);
-
+            Log.d(TAG, "onBindViewHolder: get movie link");
         }
 
 
