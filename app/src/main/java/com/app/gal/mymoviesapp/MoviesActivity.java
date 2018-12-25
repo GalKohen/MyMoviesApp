@@ -46,4 +46,9 @@ public class MoviesActivity extends BaseActivity implements OnRecyclerClickListe
 
     }
 
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy: start");
+        super.onDestroy();
+    }
 }
